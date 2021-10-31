@@ -18,16 +18,16 @@
 
     <div class="contact mt-5">
         <h4>Contact</h4>
-        <div class="my-2"><img src="images/gmail.png" alt="Gmail" class="me-2"> ariantoly.lee@gmail.com</div>
-        <div class="my-2"><img src="images/phone.png" alt="Phone" class="me-2"> +62-823-8776-6215</div>
+        <div class="my-2"><img src="icons/gmail.png" alt="Gmail" class="me-2"> ariantoly.lee@gmail.com</div>
+        <div class="my-2"><img src="icons/phone.png" alt="Phone" class="me-2"> +62-823-8776-6215</div>
         <div class="my-2"></div>
         <div></div>
     </div>
 
     <div class="contact mt-5">
         <h4>Social Media</h4>
-        <a href="https://www.linkedin.com/in/ariantoly" target="_blank" class="me-2"><img src="images/linkedin.png" alt="LinkedIn"></a>
-        <a href="https://www.instagram.com/ariantoly/" target="_blank" class="me-2"><img src="images/instagram.png" alt="Instagram"></a>
-        <a href="https://www.facebook.com/ariantoly" target="_blank" class="me-2"><img src="images/facebook.png" alt="Facebook"></a>
+        <a href="https://www.linkedin.com/in/ariantoly" target="_blank" class="me-2"><img src="icons/linkedin.png" alt="LinkedIn"></a>
+        <a href="https://www.instagram.com/ariantoly/" target="_blank" class="me-2"><img src="icons/instagram.png" alt="Instagram"></a>
+        <a href="https://www.facebook.com/ariantoly" target="_blank" class="me-2"><img src="icons/facebook.png" alt="Facebook"></a>
     </div>
 @endsection
