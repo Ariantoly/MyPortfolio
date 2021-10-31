@@ -3,7 +3,7 @@
 @section('title', 'About')
 
 @section('content')
-    <link rel="stylesheet" href="css/about-style.css">
+    <link rel="stylesheet" href="css/aboutStyle.css">
     <div class="d-flex">
         <div class="pp flex-shrink-0">
             <img src="images/pp.jpg" class="img-fluid rounded" alt="Profile Picture">

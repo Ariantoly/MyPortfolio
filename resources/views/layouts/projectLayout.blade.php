@@ -8,14 +8,14 @@
         <link rel="stylesheet" href="../css/style.css">
         <title>@yield('title')</title>
     </head>
-    <body class="bg-light">
-        @include('components.project-navbar')
+    <body class="">
+        @include('components.projectNavbar')
 
-        <div class="container py-4 px-5 my-4 shadow bg-white rounded">
+        <div class="container py-4 px-5 my-4">
             @yield('content')
         </div>
 
-        <footer class="footer bg-primary text-white d-flex justify-content-center align-items-center pt-2">
+        <footer class="footer text-white d-flex justify-content-center align-items-center pt-2">
             <p>Ariantoly | 2021</p>
         </footer>
         

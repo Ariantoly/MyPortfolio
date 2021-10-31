@@ -27,6 +27,6 @@ Route::get('/login', function() {
 });
 
 Route::fallback(function() {
-    return view('404-not-found', ['title' => '404 Not Found']);
+    return view('404NotFound', ['title' => '404 Not Found']);
 });
 
