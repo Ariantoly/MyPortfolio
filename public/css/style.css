@@ -14,6 +14,18 @@ body{
     font-size: 100pt;
 }
 
+.pp img {
+    width: 10vw;
+}
+
+.contact img{
+    width: 25px;
+}
+
+.img-main {
+    width: 50vw;
+}
+
 footer{
     background-color: #03254c;
 }

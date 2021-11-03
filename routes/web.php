@@ -26,6 +26,8 @@ Route::get('/login', function() {
     return view('login');
 });
 
+Route::get('/dashboard', [ProjectController::class, 'viewAllProject']);
+
 Route::fallback(function() {
     return view('404NotFound', ['title' => '404 Not Found']);
 });
