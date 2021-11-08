@@ -17,8 +17,9 @@ class CreateProjectTable extends Migration
             $table->id();
             $table->string("title");
             $table->string("tools");
-            $table->string("desc");
+            $table->longText('desc');
             $table->string("link");
+            $table->timestamps();
         });
     }
 

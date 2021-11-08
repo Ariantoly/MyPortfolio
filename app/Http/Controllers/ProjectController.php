@@ -48,12 +48,6 @@ class ProjectController extends Controller
         
         return view('home', ['title' => 'home', 'projects' => $projects]);
     }
-    
-    public static function viewAllProject() {
-        $projects = Project::all();
-
-        return view('dashboard', ['title' => 'Dashboard', 'projects' => $projects]);
-    }
 
     public static function getProjectById($id) {
         $projects = 
