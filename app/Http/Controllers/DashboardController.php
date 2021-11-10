@@ -16,24 +16,24 @@ class DashboardController extends Controller
     public function index()
     {
         //
-        $projects = Project::orderBy('title')->get();
+        $projects = Project::orderBy('title')->paginate(9)->withQueryString();
         $tools = Tools::all();
 
-        return view('dashboard', ['title' => 'Dashboard', 'projects' => $projects, 'tools' => $tools]);
+        return view('dashboard.dashboard', ['title' => 'Dashboard', 'projects' => $projects, 'tools' => $tools]);
     }
 
     public function showInsertForm()
     {
         $tools = Tools::all();
 
-        return view('insertProject', ['tools' => $tools]);
+        return view('dashboard.insert', ['tools' => $tools]);
     }
 
     public function showUpdateForm($id)
     {
         $tools = Tools::all();
 
-        return view('updateProject', ['tools' => $tools]);
+        return view('dashboard.update', ['tools' => $tools]);
     }
 
     /**

@@ -1,4 +1,4 @@
-@extends('layouts.dashboardLayout')
+@extends('dashboard.layouts.dashboardLayout')
 
 @section('title', 'Dashboard')
 
@@ -9,7 +9,7 @@
         </div>
 
         <div class="d-flex justify-content-end mb-3">
-            <button class="btn btn-primary" onclick="location.href='/dashboard/insertProject'"><i class="bi bi-plus-circle"></i> Insert New Project</button>
+            <a href="/dashboard/insert" class="btn btn-primary"><i class="bi bi-plus-circle"></i> Insert New Project</a>
             <br><br>
         </div>
 
@@ -21,9 +21,9 @@
                     <tr>
                         <th scope="col" class="col-2">Project Title</th>
                         <th scope="col" class="col-6">Project Description</th>
-                        <th scope="col" class="col-1">Tools</th>
+                        <th scope="col" class="col-2">Tools</th>
                         <th scope="col" class="col-1">Project Link</th>
-                        <th scope="col" class="col-3">Action</th>
+                        <th scope="col" class="col-1">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -35,15 +35,15 @@
                             <td><a href="{{ $p->link }}" target="_blank">{{ $p->link }}</a></td>
                             <td>
                                 <div class="d-flex justify-content-around">
-                                <form action="/dashboard/update/{{ $p->id }}" method="POST">
+                                <form action="/dashboard/update/{{ $p->id }}" method="POST" class="d-inline">
                                     @csrf
                                     @method('put')
-                                    <button class="btn btn-success" type="submit">Update</button>
+                                    <button class="badge bg-warning border-0 p-2" type="submit"><i class="bi bi-pencil-fill"></i></button>
                                 </form>
-                                <form action="/dashboard/delete/{{ $p->id }}" method="POST">
+                                <form action="/dashboard/delete/{{ $p->id }}" method="POST" class="d-inline">
                                     @csrf
                                     @method('delete')
-                                    <button class="btn btn-danger" type="submit">Delete</button>
+                                    <button class="badge bg-danger border-0 p-2" type="submit"><i class="bi bi-trash-fill"></i></button>
                                 </form>
                             </div>
                             </td>
@@ -52,5 +52,10 @@
                 </tbody>
             </table>
         </div>
+
+        <div class="d-flex justify-content-end">
+            {{ $projects->links() }}
+        </div>
+
     </main>
 @endsection

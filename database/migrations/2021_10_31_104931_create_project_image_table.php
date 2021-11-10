@@ -14,12 +14,12 @@ class CreateProjectImageTable extends Migration
     public function up()
     {
         //
-        Schema::create('projectImages', function (Blueprint $table) {
-            $table->unsignedBigInteger("projectId");
-            $table->string("path");
+        Schema::create('project_images', function (Blueprint $table) {
+            $table->unsignedBigInteger("project_id");
+            $table->string("img_path");
             $table->timestamps();
             
-            $table->foreign('projectId')->references('id')->on('projects')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('project_id')->references('id')->on('projects')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

@@ -1,4 +1,4 @@
-@extends('layouts.dashboardLayout')
+@extends('dashboard.layouts.dashboardLayout')
 
 @section('title', 'Insert New Project')
 
@@ -7,7 +7,7 @@
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
             <h1>Insert New Project</h1>
         </div>
-        <form action="/dashboard/insertProject/insert" method="post" enctype="multipart/form-data">
+        <form action="/dashboard/insert" method="post" enctype="multipart/form-data">
             @csrf
             <div class="mb-3">
                 <label for="title" class="form-label">Title</label>

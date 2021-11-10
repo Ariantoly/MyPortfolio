@@ -3,6 +3,7 @@
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\LoginController;
 use Illuminate\Http\Client\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -23,16 +24,18 @@ Route::get('/about', [UserController::class, 'index']);
 
 Route::get('/project/{id}', [ProjectController::class, 'getProjectById']);
 
-Route::get('/login', function() {
-    return view('login');
-});
+Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
+
+Route::post('/login', [LoginController::class, 'authenticate']);
+
+Route::post('/logout', [LoginController::class, 'logout']);
 
 Route::prefix('/dashboard')->group(function () {
-    Route::get('/', [DashboardController::class, 'index']);
-    Route::get('/insertProject', [DashboardController::class, 'showInsertForm']);
-    Route::post('/insertProject/insert', [DashboardController::class, 'insertProject']);
-    Route::delete('/delete/{id}', [DashboardController::class, 'deleteProject']);
-    Route::delete('/update/{id}', [DashboardController::class, 'showUpdateForm']);
+    Route::get('/', [DashboardController::class, 'index'])->middleware('auth');
+    Route::get('/insert', [DashboardController::class, 'showInsertForm'])->middleware('auth');
+    Route::post('/insert', [DashboardController::class, 'insertProject'])->middleware('auth');
+    Route::delete('/delete/{id}', [DashboardController::class, 'deleteProject'])->middleware('auth');
+    Route::delete('/update/{id}', [DashboardController::class, 'showUpdateForm'])->middleware('auth');
 });
 
 Route::fallback(function() {

@@ -9,7 +9,7 @@ class Project extends Model
 {
     use HasFactory;
 
-    public function projectImage() {
+    public function projectimages() {
         return $this->hasMany(ProjectImage::class);
     }
 }

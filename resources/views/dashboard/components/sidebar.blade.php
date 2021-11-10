@@ -3,18 +3,18 @@
     <div class="position-sticky pt-3">
     <ul class="nav flex-column">
         <li class="nav-item">
-        <a class="nav-link active" aria-current="page" href="/dashboard">
+        <a class="nav-link {{ Request::is('dashboard') ? 'active' : '' }}" aria-current="page" href="/dashboard">
             <span data-feather="home"></span>
             Dashboard
         </a>
         </li>
         <li class="nav-item">
-        <a class="nav-link" href="/projectImage">
+        <a class="nav-link {{ Request::is('dashboard/projectImage') ? 'active' : '' }}" href="/projectImage">
             Project Image
         </a>
         </li>
         <li class="nav-item">
-        <a class="nav-link" href="/tools">
+        <a class="nav-link {{ Request::is('dashboard/tools') ? 'active' : '' }}" href="/tools">
             Tools
         </a>
         </li>
