@@ -12,7 +12,7 @@
             <div class="col">
                 <a href="/project/{{ $project->id }}" class="text-reset text-decoration-none">
                 <div class="card border-primary h-100 shadow-sm">
-                    @if($project->id == 1)
+                    @if(sizeof($project->projectImages) != 0)
                         @php
                             $projectImages = $project->projectimages[0]->img_path;
                         @endphp

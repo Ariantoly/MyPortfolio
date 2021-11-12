@@ -13,7 +13,8 @@
             <br><br>
         </div>
 
-        Total: {{ sizeof($projects) }}
+        Total: {{ $size }}
+        <br><br>
 
         <div class="table-responsive">
             <table class="table table-striped">
@@ -35,9 +36,8 @@
                             <td><a href="{{ $p->link }}" target="_blank">{{ $p->link }}</a></td>
                             <td>
                                 <div class="d-flex justify-content-around">
-                                <form action="/dashboard/update/{{ $p->id }}" method="POST" class="d-inline">
+                                <form action="/dashboard/update/{{ $p->id }}" method="GET" class="d-inline">
                                     @csrf
-                                    @method('put')
                                     <button class="badge bg-warning border-0 p-2" type="submit"><i class="bi bi-pencil-fill"></i></button>
                                 </form>
                                 <form action="/dashboard/delete/{{ $p->id }}" method="POST" class="d-inline">

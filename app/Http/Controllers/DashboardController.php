@@ -16,48 +16,60 @@ class DashboardController extends Controller
     public function index()
     {
         //
-        $projects = Project::orderBy('title')->paginate(9)->withQueryString();
+        $projects = Project::orderBy('title')->paginate(10)->withQueryString();
+        $size = Project::all()->count();
         $tools = Tools::all();
 
-        return view('dashboard.dashboard', ['title' => 'Dashboard', 'projects' => $projects, 'tools' => $tools]);
+        return view('dashboard.dashboard', ['title' => 'Dashboard', 'projects' => $projects, 'tools' => $tools, 'size' => $size]);
     }
 
     public function showInsertForm()
     {
         $tools = Tools::all();
 
-        return view('dashboard.insert', ['tools' => $tools]);
+        return view('dashboard.insertProject', ['title' => 'Insert', 'tools' => $tools]);
     }
 
     public function showUpdateForm($id)
     {
         $tools = Tools::all();
+        $project = Project::find($id);
 
-        return view('dashboard.update', ['tools' => $tools]);
+        return view('dashboard.updateProject', ['title' => 'Update', 'tools' => $tools, 'project' => $project]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function insertProject(Request $request)
     {
         $project = new Project();
         $project->title = $request->title;
         $project->desc = $request->desc;
         $project->link = $request->link;
+        $tools = "";
+        $i = 0;
+
+        foreach($request->tools as $tool) {
+            if($i == sizeof($request->tools) - 1) {
+                $tools = $tools.$tool;
+                break;
+            }
+            $tools = $tools.$tool.", ";
+            $i++;
+        }
+
+        $project->tools = $tools;
+
+        $project->save();
+
+        return redirect('/dashboard');
+    }
+
+    public function updateProject(Request $request, $id)
+    {
+        $project = Project::find($id);
+        $project->title = $request->title;
+        $project->desc = $request->desc;
+        $project->link = $request->link;
+        $project->tools = "";
         $tools = "";
         $i = 0;
 
@@ -86,48 +98,5 @@ class DashboardController extends Controller
         return redirect()->back();
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+    
 }

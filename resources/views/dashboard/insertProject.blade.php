@@ -29,13 +29,6 @@
                         <label class="btn btn-outline-primary" for="btncheck{{ $i }}">{{ $tool->name }}</label>
                         @php $i++; @endphp
                     @endforeach
-{{--                     
-                  
-                    <input type="checkbox" class="btn-check" id="btncheck2" autocomplete="off" name="tools[]" value="HTML">
-                    <label class="btn btn-outline-primary" for="btncheck2">HTML</label>
-                  
-                    <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off" name="tools[]" value="CSS">
-                    <label class="btn btn-outline-primary" for="btncheck3">CSS</label> --}}
                 </div>
             </div>
 

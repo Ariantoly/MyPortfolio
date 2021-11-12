@@ -35,7 +35,8 @@ Route::prefix('/dashboard')->group(function () {
     Route::get('/insert', [DashboardController::class, 'showInsertForm'])->middleware('auth');
     Route::post('/insert', [DashboardController::class, 'insertProject'])->middleware('auth');
     Route::delete('/delete/{id}', [DashboardController::class, 'deleteProject'])->middleware('auth');
-    Route::delete('/update/{id}', [DashboardController::class, 'showUpdateForm'])->middleware('auth');
+    Route::get('/update/{id}', [DashboardController::class, 'showUpdateForm'])->middleware('auth');
+    Route::put('/update/{id}', [DashboardController::class, 'updateProject'])->middleware('auth');
 });
 
 Route::fallback(function() {

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark shadow">
+<nav class="navbar navbar-expand-lg navbar-dark shadow sticky-top">
     <div class="container-fluid">
         <a class="navbar-brand ps-5" href="/">
             Ariantoly

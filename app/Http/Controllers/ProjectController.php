@@ -4,46 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Project;
 use App\Models\ProjectImage;
+use App\Models\Tools;
 use Illuminate\Http\Request;
 
 class ProjectController extends Controller
 {
     public static function index() {
-        // $projects = 
-        // [
-        //     [
-        //         "id" => 1, 
-        //         "title" => "Frawlsalla",
-        //         "tools" => ["HTML", "CSS", "JavaScript"],
-        //         "desc" => "Tugas Kelompok Project HCI by Ariantoly, Ivano Ekasetia Tjahyadi, Raksi Ghaly Rianto",
-        //         "img" => "images/frawlsalla-1.png",
-        //         "link" => "https://github.com/Ariantoly/Frawlsalla"
-        //     ],
-        //     [
-        //         "id" => 2, 
-        //         "title" => "InvoiceApplication",
-        //         "tools" => ["HTML", "CSS", "Bootstrap", "Laravel"],
-        //         "desc" => "Tugas Test Junior Programmer IT Division - Bugged",
-        //         "img" => "images/frawlsalla-1.png",
-        //         "link" => "https://github.com/Ariantoly/InvoiceApplication"
-        //     ],
-        //     [
-        //         "id" => 3, 
-        //         "title" => "NeinteenFlower",
-        //         "tools" => ["ASP.NET"],
-        //         "desc" => "Tugas Kelompok Project PSD by Ariantoly, Ivano Ekasetia Tjahyadi, Raksi Ghaly Rianto",
-        //         "img" => "images/frawlsalla-1.png",
-        //         "link" => "https://github.com/Ariantoly/NeinteenFlower"
-        //     ],
-        //     [
-        //         "id" => 4, 
-        //         "title" => "Keypedia",
-        //         "tools" => ["HTML", "CSS", "Bootstrap", "Laravel"],
-        //         "desc" => "Tugas Project Web Programming",
-        //         "img" => "images/frawlsalla-1.png",
-        //         "link" => "https://github.com/Ariantoly/keypedia"
-        //     ]
-        // ];
 
         $projects = Project::orderBy('title')->paginate(9)->withQueryString();
         $projectImage = ProjectImage::all();
@@ -52,55 +18,24 @@ class ProjectController extends Controller
     }
 
     public static function getProjectById($id) {
-        $projects = 
-        [
-            [
-                "id" => 1, 
-                "title" => "Frawlsalla",
-                "tools" => ["HTML", "CSS", "JavaScript"],
-                "desc" => "Tugas Kelompok Project HCI by Ariantoly, Ivano Ekasetia Tjahyadi, Raksi Ghaly Rianto",
-                "img" => "images/frawlsalla-1.png",
-                "link" => "https://github.com/Ariantoly/Frawlsalla"
-            ],
-            [
-                "id" => 2, 
-                "title" => "InvoiceApplication",
-                "tools" => ["HTML", "CSS", "Bootstrap", "Laravel"],
-                "desc" => "Tugas Test Junior Programmer IT Division - Bugged",
-                "img" => "images/frawlsalla-1.png",
-                "link" => "https://github.com/Ariantoly/InvoiceApplication"
-            ],
-            [
-                "id" => 3, 
-                "title" => "NeinteenFlower",
-                "tools" => ["ASP.NET"],
-                "desc" => "Tugas Kelompok Project PSD by Ariantoly, Ivano Ekasetia Tjahyadi, Raksi Ghaly Rianto",
-                "img" => "images/frawlsalla-1.png",
-                "link" => "https://github.com/Ariantoly/NeinteenFlower"
-            ],
-            [
-                "id" => 4, 
-                "title" => "Keypedia",
-                "tools" => ["HTML", "CSS", "Bootstrap", "Laravel"],
-                "desc" => "Tugas Project Web Programming",
-                "img" => "images/frawlsalla-1.png",
-                "link" => "https://github.com/Ariantoly/keypedia"
-            ]
-        ];
 
-        $selected = null;
+        $project = Project::find($id);
+        $t = $project->tools;
+        $tok = strtok($t, '[, ]+');
+        $conv = array();
+        $tools = array();
 
-        foreach($projects as $project) {
-            if((int) $id === $project['id']) {
-                $selected = $project;
-            }
-                
+        while($tok) {
+            array_push($conv, $tok);
+            $tok = strtok('[, ]+');
+        }
+        foreach($conv as $c) {
+            $tool = Tools::where('name', $c)->get();
+            array_push($tools, $tool);
         }
 
-        return view('project', ['title' => $selected['title'], 'project' => $selected]);
-    }
-
-    public static function insert() {
+        return view('project', ['title' => $project->title, 'project' => $project, 'tools' => $tools]);
 
     }
+
 }
