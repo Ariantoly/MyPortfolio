@@ -11,7 +11,7 @@
         @foreach($projects as $project)
             <div class="col">
                 <a href="/project/{{ $project->id }}" class="text-reset text-decoration-none">
-                <div class="card border-primary h-100 shadow-sm">
+                <div class="card h-100 shadow">
                     <div class="card-image">
                         @if(sizeof($project->images) != 0)
                             @php

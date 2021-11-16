@@ -36,18 +36,18 @@
 
     <div class="contact mt-5">
         <h4 class="fs-3 fw-bold">Contact</h4>
-        <div class="my-2"><img src="icons/gmail.png" alt="Gmail" class="me-2"> ariantoly1@gmail.com</div>
-        <div class="my-2"><img src="icons/outlook.png" alt="Outlook" class="me-2"> ariantoly@binus.ac.id</div>
-        <div class="my-2"><img src="icons/phone.png" alt="Phone" class="me-2"> +62-823-8776-6215</div>
+        <div class="my-2"><img src="icon/gmail.png" alt="Gmail" class="me-2"> ariantoly1@gmail.com</div>
+        <div class="my-2"><img src="icon/outlook.png" alt="Outlook" class="me-2"> ariantoly@binus.ac.id</div>
+        <div class="my-2"><img src="icon/phone.png" alt="Phone" class="me-2"> +62-823-8776-6215</div>
         <div class="my-2"></div>
         <div></div>
     </div>
 
     <div class="contact mt-5">
         <h4 class="fs-3 fw-bold">Social Media</h4>
-        <a href="https://www.linkedin.com/in/ariantoly" target="_blank" class="me-2"><img src="icons/linkedin.png" alt="LinkedIn"></a>
-        <a href="https://www.instagram.com/ariantoly/" target="_blank" class="me-2"><img src="icons/instagram.png" alt="Instagram"></a>
-        <a href="https://www.facebook.com/ariantoly" target="_blank" class="me-2"><img src="icons/facebook.png" alt="Facebook"></a>
-        <a href="https://www.github.com/Ariantoly" target="_blank" class="me-2"><img src="icons/github.png" alt="Github"></a>
+        <a href="https://www.linkedin.com/in/ariantoly" target="_blank" class="me-2"><img src="icon/linkedin.png" alt="LinkedIn"></a>
+        <a href="https://www.instagram.com/ariantoly/" target="_blank" class="me-2"><img src="icon/instagram.png" alt="Instagram"></a>
+        <a href="https://www.facebook.com/ariantoly" target="_blank" class="me-2"><img src="icon/facebook.png" alt="Facebook"></a>
+        <a href="https://www.github.com/Ariantoly" target="_blank" class="me-2"><img src="icon/github.png" alt="Github"></a>
     </div>
 @endsection

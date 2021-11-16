@@ -19,7 +19,7 @@
         <h4>Tools</h4>
         <div class="tools d-flex align-items-center">
             @foreach ($project->tools as $tool)
-                <img src="{{ $tool->path }}" alt="{{ $tool->name }}" class="tools me-4">
+                <img src="{{ $tool->path }}" alt="{{ $tool->name }}" title="{{ $tool->name }}" class="tools me-4">
             @endforeach
         </div>
     </div>
