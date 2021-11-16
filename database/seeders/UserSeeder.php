@@ -18,7 +18,7 @@ class UserSeeder extends Seeder
         DB::table('users')->insert([
             'name' => 'Ariantoly',
             'email' => 'ariantoly.lee@gmail.com',
-            'password' => '.Ariantolyportfolio7294.'
+            'password' => '$2y$10$pXRzK.AzBR7qqRqEhlJUKOuIknKppB2l9OfqZqGZe/GGjsHVoX1z.'
         ]);
     }
 }

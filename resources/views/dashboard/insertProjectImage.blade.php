@@ -1,46 +1,35 @@
 @extends('dashboard.layouts.dashboardLayout')
 
-@section('title', 'Insert New Project')
+@section('title', 'Insert New Image')
 
 @section('content')
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-            <h1>Insert New Project</h1>
+            <h1>Insert New Image</h1>
         </div>
-        <form action="/dashboard/insert" method="post" enctype="multipart/form-data">
+        
+        <form action="/image/insert" method="post" enctype="multipart/form-data">
             @csrf
             <div class="mb-3">
-                <label for="title" class="form-label">Title</label>
-                <input type="text" class="form-control" placeholder = "Project Title" id="title" name="title">
-            </div>
-
-            <div class="mb-3">
-                <label for="desc" class="form-label">Description</label>
-                <textarea class="form-control" placeholder="Project Description" name="desc" id="desc" style="height: 100px"></textarea>
-            </div>
-
-            <div class="mb-3">
-                <label for="btn-group" class="form-label">Tools</label>
-                <br>
-                <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-                    @php $i = 1; @endphp
-                    @foreach ($tools as $tool)
-                        <input type="checkbox" class="btn-check" id="btncheck{{ $i }}" autocomplete="off" name="tools[]" value="{{ $tool->name }}">
-                        <label class="btn btn-outline-primary" for="btncheck{{ $i }}">{{ $tool->name }}</label>
-                        @php $i++; @endphp
+                <label for="project" class="form-label">Project</label>
+                <select class="form-select" aria-label="Default select example" name="projects[]" required>
+                    @php
+                        $i = 1;
+                    @endphp
+                    @foreach ($projects as $p)
+                        <option value="{{ $p->id }}" @if($i == 1) selected @php $i++; @endphp @endif>{{ $p->title }}</option>
                     @endforeach
-                </div>
+                </select>
             </div>
 
-            <div class="mb-3">
-                <label for="link" class="form-label">Link</label>
-                <input type="text" class="form-control" placeholder = "Project Link" id="link" name="link">
-            </div>
-{{--             
             <div class="mb-3">
                 <label for="formFile" class="form-label">Image</label>
-                <input class="form-control" type="file" id="image" data-show-upload="false" data-show-caption="true" name="image">
-            </div> --}}
+                <input class="form-control" type="file" data-show-upload="false" data-show-caption="true" name="image1" required>
+                <input class="form-control" type="file" data-show-upload="false" data-show-caption="true" name="image2">
+                <input class="form-control" type="file" data-show-upload="false" data-show-caption="true" name="image3">
+                <input class="form-control" type="file" data-show-upload="false" data-show-caption="true" name="image4">
+                <input class="form-control" type="file" data-show-upload="false" data-show-caption="true" name="image5">
+            </div>
             <button type="submit" class="btn btn-primary">Insert</button>
         </form>
     </main>

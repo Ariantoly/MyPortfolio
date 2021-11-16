@@ -4,6 +4,8 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ProjectImageController;
+use App\Http\Controllers\ToolsController;
 use Illuminate\Http\Client\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -37,6 +39,17 @@ Route::prefix('/dashboard')->group(function () {
     Route::delete('/delete/{id}', [DashboardController::class, 'deleteProject'])->middleware('auth');
     Route::get('/update/{id}', [DashboardController::class, 'showUpdateForm'])->middleware('auth');
     Route::put('/update/{id}', [DashboardController::class, 'updateProject'])->middleware('auth');
+});
+
+Route::prefix('/image')->group(function () {
+    Route::get('/', [ProjectImageController::class, 'index'])->middleware('auth');
+    Route::get('/insert', [ProjectImageController::class, 'showInsertForm'])->middleware('auth');
+    Route::post('/insert', [ProjectImageController::class, 'insert'])->middleware('auth');
+});
+
+Route::prefix('/tools')->group(function () {
+    Route::get('/', [ToolsController::class, 'index'])->middleware('auth');
+    Route::get('/insert', [ToolsController::class, 'showInsertForm'])->middleware('auth');
 });
 
 Route::fallback(function() {

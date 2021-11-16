@@ -18,14 +18,13 @@ class DashboardController extends Controller
         //
         $projects = Project::orderBy('title')->paginate(10)->withQueryString();
         $size = Project::all()->count();
-        $tools = Tools::all();
 
-        return view('dashboard.dashboard', ['title' => 'Dashboard', 'projects' => $projects, 'tools' => $tools, 'size' => $size]);
+        return view('dashboard.dashboard', ['title' => 'Dashboard', 'projects' => $projects, 'size' => $size]);
     }
 
     public function showInsertForm()
     {
-        $tools = Tools::all();
+        $tools = Tools::orderBy('type')->get();
 
         return view('dashboard.insertProject', ['title' => 'Insert', 'tools' => $tools]);
     }
@@ -44,23 +43,17 @@ class DashboardController extends Controller
         $project->title = $request->title;
         $project->desc = $request->desc;
         $project->link = $request->link;
-        $tools = "";
-        $i = 0;
-
-        foreach($request->tools as $tool) {
-            if($i == sizeof($request->tools) - 1) {
-                $tools = $tools.$tool;
-                break;
-            }
-            $tools = $tools.$tool.", ";
-            $i++;
-        }
-
-        $project->tools = $tools;
+        $tools = $request->tools;
 
         $project->save();
 
-        return redirect('/dashboard');
+        $project1 = Project::find($project->id);
+        foreach($tools as $t) {
+            $tool = Tools::where('name', $t)->first();
+            $project1->tools()->attach($tool);
+        }
+
+        return redirect('/dashboard')->with('success', $project->title.' Inserted');
     }
 
     public function updateProject(Request $request, $id)
@@ -69,24 +62,18 @@ class DashboardController extends Controller
         $project->title = $request->title;
         $project->desc = $request->desc;
         $project->link = $request->link;
-        $project->tools = "";
-        $tools = "";
-        $i = 0;
+        $tools = $request->tools;
 
-        foreach($request->tools as $tool) {
-            if($i == sizeof($request->tools) - 1) {
-                $tools = $tools.$tool;
-                break;
-            }
-            $tools = $tools.$tool.", ";
-            $i++;
+        $project->tools()->detach();
+
+        foreach($tools as $t) {
+            $tool = Tools::where('name', $t)->first();
+            $project->tools()->attach($tool);
         }
-
-        $project->tools = $tools;
 
         $project->save();
 
-        return redirect('/dashboard');
+        return redirect('/dashboard')->with('success', $project->title.' Updated');
     }
 
     public function deleteProject($id)

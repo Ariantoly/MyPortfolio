@@ -9,12 +9,12 @@
         </a>
         </li>
         <li class="nav-item">
-        <a class="nav-link {{ Request::is('dashboard/projectImage') ? 'active' : '' }}" href="/projectImage">
+        <a class="nav-link {{ Request::is('image') ? 'active' : '' }}" href="/image">
             Project Image
         </a>
         </li>
         <li class="nav-item">
-        <a class="nav-link {{ Request::is('dashboard/tools') ? 'active' : '' }}" href="/tools">
+        <a class="nav-link {{ Request::is('tools') ? 'active' : '' }}" href="/tools">
             Tools
         </a>
         </li>

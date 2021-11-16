@@ -12,18 +12,32 @@
             <div class="col">
                 <a href="/project/{{ $project->id }}" class="text-reset text-decoration-none">
                 <div class="card border-primary h-100 shadow-sm">
-                    @if(sizeof($project->projectImages) != 0)
-                        @php
-                            $projectImages = $project->projectimages[0]->img_path;
-                        @endphp
-                        <img src="{{ $projectImages }}" class="card-img-top" alt="{{ $project->title }}" title="{{ $project->title }}">    
-                    @else
-                        <img src="/images/no-image.jpeg" class="card-img-top" alt="{{ $project->title }}" title="{{ $project->title }}">    
-                    @endif
+                    <div class="card-image">
+                        @if(sizeof($project->images) != 0)
+                            @php
+                                $projectImages = $project->images[0]->path;
+                            @endphp
+                            <img src="{{ $projectImages }}" class="card-img-top img-fluid" alt="{{ $project->title }}" title="{{ $project->title }}">    
+                        {{-- @else
+                            <img src="/images/no-image.jpeg" class="card-img-top img-fluid" alt="{{ $project->title }}" title="{{ $project->title }}">     --}}
+                        @endif
+                    </div>
                     <div class="card-body">
                         <h5 class="card-title">{{ $project->title }}</h5>
                         <p class="card-text fs-6 fst-italic">
-                            {{ $project->tools }}
+                            @php
+                                $i = 1;
+                            @endphp
+                            @foreach ($project->tools as $t)
+                                @if ($i != sizeof($project->tools))
+                                    {{ $t->name.', ' }}
+                                    @php
+                                        $i++;
+                                    @endphp
+                                @else
+                                    {{ $t->name}}
+                                @endif
+                            @endforeach
                         </p>
                         <p class="card-text">{{ $project->desc }}</p>
                     </div>

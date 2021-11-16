@@ -18,17 +18,17 @@
     <div class="tools mt-4 mb-5">
         <h4>Tools</h4>
         <div class="tools d-flex align-items-center">
-            @foreach ($tools as $tool)
-                <img src="{{ $tool[0]->path }}" alt="{{ $tool[0]->name }}" class="tools me-4">
+            @foreach ($project->tools as $tool)
+                <img src="{{ $tool->path }}" alt="{{ $tool->name }}" class="tools me-4">
             @endforeach
         </div>
     </div>
     
-    @if(sizeof($project->projectImages) != 0)
-    <div class="mb-4">
-        <h4>Preview</h4>
-        @include('components.previewProject')
-    </div>
+    @if(sizeof($project->images) != 0)
+        <div class="mb-4">
+            <h4>Preview</h4>
+            @include('components.previewProject')
+        </div>
     @endif
 
 @endsection

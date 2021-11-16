@@ -1,12 +1,13 @@
 @php
-    $projectImages = $project->projectimages;
     $i = 1;
 @endphp
 <div id="carouselExampleInterval" class="carousel slide carousel-dark w-100" data-bs-ride="carousel">
     <div class="carousel-inner">
-        @foreach($projectImages as $img)
-            <div class="carousel-item @if($i == 1) active @endif" data-bs-interval="5000">
-                <img src="{{ $img->img_path }}" class="d-block w-100" alt="{{ $project->title }}">
+        @foreach($project->images as $img)
+            <div class="carousel-item @if($i == 1) active @endif" data-bs-interval="4000">
+                <div class="d-flex justify-content-center">
+                    <img src="{{ '/'.$img->path }}" class="d-block img-fluid" alt="{{ $project->title }}">
+                </div>
             </div>
             @php
                 $i++;

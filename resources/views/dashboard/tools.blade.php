@@ -1,15 +1,15 @@
 @extends('dashboard.layouts.dashboardLayout')
 
-@section('title', 'Dashboard')
+@section('title', 'Tools')
 
 @section('content')
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-            <h1>Dashboard</h1>
+            <h1>Tools</h1>
         </div>
 
         <div class="d-flex justify-content-end mb-3">
-            <a href="/dashboard/insert" class="btn btn-primary"><i class="bi bi-plus-circle"></i> Insert New Project</a>
+            <a href="/image/insert" class="btn btn-primary"><i class="bi bi-plus-circle"></i> Insert New Tools</a>
             <br><br>
         </div>
 
@@ -26,41 +26,25 @@
             <table class="table table-striped">
                 <thead class="table-dark">
                     <tr>
-                        <th scope="col" class="col-2">Project Title</th>
-                        <th scope="col" class="col-6">Project Description</th>
-                        <th scope="col" class="col-2">Tools</th>
-                        <th scope="col" class="col-1">Project Link</th>
+                        <th scope="col">Tools</th>
+                        <th scope="col">Type</th>
+                        <th scope="col">Image Path</th>
                         <th scope="col" class="col-1">Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($projects as $p)
+                    @foreach ($tools as $t)
                         <tr>
-                            <td>{{ $p->title }}</td>
-                            <td>{{ $p->desc }}</td>
-                            <td>
-                                @php
-                                    $i = 1;
-                                @endphp
-                                @foreach ($p->tools as $t)
-                                    @if ($i != sizeof($p->tools))
-                                        {{ $t->name.', ' }}
-                                        @php
-                                            $i++;
-                                        @endphp
-                                    @else
-                                        {{ $t->name}}
-                                    @endif
-                                @endforeach
-                            </td>
-                            <td><a href="{{ $p->link }}" target="_blank">{{ $p->link }}</a></td>
+                            <td>{{ $t->name }}</td>
+                            <td>{{ $t->type }}</td>
+                            <td>{{ $t->path }}</td>
                             <td>
                                 <div class="d-flex justify-content-around">
-                                <form action="/dashboard/update/{{ $p->id }}" method="GET" class="d-inline">
+                                <form action="/tools/update/{{ $t->id }}" method="GET" class="d-inline">
                                     @csrf
                                     <button class="badge bg-warning border-0 p-2" type="submit"><i class="bi bi-pencil-fill"></i></button>
                                 </form>
-                                <form action="/dashboard/delete/{{ $p->id }}" method="POST" class="d-inline delete">
+                                <form action="/tools/delete/{{ $t->id }}" method="POST" class="d-inline delete">
                                     @csrf
                                     @method('delete')
                                     <button class="badge bg-danger border-0 p-2" type="submit"><i class="bi bi-trash-fill"></i></button>
@@ -74,9 +58,8 @@
         </div>
 
         <div class="d-flex justify-content-end">
-            {{ $projects->links() }}
+            {{ $tools->links() }}
         </div>
-
     </main>
 
     <script>

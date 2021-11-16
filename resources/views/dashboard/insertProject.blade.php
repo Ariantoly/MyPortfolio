@@ -11,12 +11,12 @@
             @csrf
             <div class="mb-3">
                 <label for="title" class="form-label">Title</label>
-                <input type="text" class="form-control" placeholder = "Project Title" id="title" name="title">
+                <input type="text" class="form-control" placeholder = "Project Title" id="title" name="title" required>
             </div>
 
             <div class="mb-3">
                 <label for="desc" class="form-label">Description</label>
-                <textarea class="form-control" placeholder="Project Description" name="desc" id="desc" style="height: 100px"></textarea>
+                <textarea class="form-control" placeholder="Project Description" name="desc" id="desc" style="height: 100px" required></textarea>
             </div>
 
             <div class="mb-3">
@@ -34,7 +34,7 @@
 
             <div class="mb-3">
                 <label for="link" class="form-label">Link</label>
-                <input type="text" class="form-control" placeholder = "Project Link" id="link" name="link">
+                <input type="text" class="form-control" placeholder = "Project Link" id="link" name="link" required>
             </div>
 {{--             
             <div class="mb-3">

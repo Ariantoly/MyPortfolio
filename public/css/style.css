@@ -1,5 +1,5 @@
 .container{
-    min-height: 80vh;
+    min-height: 100vh;
     padding: 10vh 6vw;
 }
 
@@ -13,6 +13,26 @@ body{
 
 .notFound{
     font-size: 100pt;
+}
+
+.card-image{
+    max-height: 280px;
+}
+
+.card-image img{
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+
+.carousel-item{
+    max-height: 650px;
+}
+
+.carousel-item img{
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
 }
 
 .pp img {
