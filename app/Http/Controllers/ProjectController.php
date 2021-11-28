@@ -12,14 +12,14 @@ class ProjectController extends Controller
 
         $projects = Project::orderBy('title')->paginate(9)->withQueryString();
         
-        return view('home', ['title' => 'home', 'projects' => $projects]);
+        return view('home', ['projects' => $projects]);
     }
 
     public static function getProjectById($id) {
 
         $project = Project::find($id);
 
-        return view('project', ['title' => $project->title, 'project' => $project]);
+        return view('project', ['project' => $project]);
 
     }
 

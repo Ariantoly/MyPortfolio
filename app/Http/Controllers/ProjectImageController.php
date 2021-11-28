@@ -14,13 +14,13 @@ class ProjectImageController extends Controller
         $images = Image::paginate(10)->withQueryString();
         $size = Image::all()->count();
 
-        return view('dashboard.image', ['title' => 'Project Image', 'images' => $images, 'size' => $size]);
+        return view('dashboard.image', ['images' => $images, 'size' => $size]);
     }
 
     public function showInsertForm() {
         $projects = Project::orderBy('title')->get();
 
-        return view('dashboard.insertProjectImage', ['title' => 'Insert New Image', 'projects' => $projects]);
+        return view('dashboard.insertProjectImage', ['projects' => $projects]);
     }
 
     public function insert(Request $request) {

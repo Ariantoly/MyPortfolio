@@ -19,14 +19,14 @@ class DashboardController extends Controller
         $projects = Project::orderBy('title')->paginate(10)->withQueryString();
         $size = Project::all()->count();
 
-        return view('dashboard.dashboard', ['title' => 'Dashboard', 'projects' => $projects, 'size' => $size]);
+        return view('dashboard.dashboard', ['projects' => $projects, 'size' => $size]);
     }
 
     public function showInsertForm()
     {
         $tools = Tools::orderBy('type')->get();
 
-        return view('dashboard.insertProject', ['title' => 'Insert', 'tools' => $tools]);
+        return view('dashboard.insertProject', ['tools' => $tools]);
     }
 
     public function showUpdateForm($id)
@@ -34,7 +34,7 @@ class DashboardController extends Controller
         $tools = Tools::all();
         $project = Project::find($id);
 
-        return view('dashboard.updateProject', ['title' => 'Update', 'tools' => $tools, 'project' => $project]);
+        return view('dashboard.updateProject', ['tools' => $tools, 'project' => $project]);
     }
 
     public function insertProject(Request $request)

@@ -59,8 +59,8 @@ footer{
 /* Scroll To Top */
 #toTopBtn {
     position: fixed;
-    bottom: 26px;
-    right: 39px;
+    bottom: 50px;
+    right: 50px;
     z-index: 98;
     padding: 21px;
     /* background-color: #03254c; */

@@ -1,6 +1,6 @@
 @extends('layouts.layout')
 
-@section('title', $title)
+@section('title', $project->title)
 
 @section('content')
     <link rel="stylesheet" href="../css/projectStyle.css">

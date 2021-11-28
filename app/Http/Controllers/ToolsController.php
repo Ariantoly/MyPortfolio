@@ -12,11 +12,11 @@ class ToolsController extends Controller
         $tools = Tools::paginate(10)->withQueryString();
         $size = Tools::all()->count();
 
-        return view('dashboard.tools', ['title' => 'Tools', 'tools' => $tools, 'size' => $size]);
+        return view('dashboard.tools', ['tools' => $tools, 'size' => $size]);
     }
 
     public function showInsertForm()
     {
-        return view('dashboard.insertTools', ['title' => 'Insert']);
+        return view('dashboard.insertTools');
     }
 }

@@ -9,10 +9,10 @@
         <div class="collapse navbar-collapse justify-content-end pe-5" id="navbarNavAltMarkup">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link @if($title === 'home') active @endif" aria-current="page" href="/"><i class="bi bi-house-door-fill"></i> Home</a>
+                    <a class="nav-link @if(Request::is('/')) active @endif" aria-current="page" href="/"><i class="bi bi-house-door-fill"></i> Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link @if($title === 'about') active @endif" href="/about"><i class="bi bi-file-person-fill"></i> About Me</a>
+                    <a class="nav-link @if(Request::is('about')) active @endif" href="/about"><i class="bi bi-file-person-fill"></i> About Me</a>
                 </li>
             </ul>
         </div>
